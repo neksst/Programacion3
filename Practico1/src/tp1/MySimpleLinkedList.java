@@ -1,6 +1,8 @@
 package tp1;
 
-public class MySimpleLinkedList<T> {
+import java.util.Iterator;
+
+public class MySimpleLinkedList<T> implements Iterable<T>{
 	
 	private Node<T> first;
 	private int size;
@@ -41,6 +43,17 @@ public class MySimpleLinkedList<T> {
 		
 	}
 	
+	public int indexOf(T data) {
+		Node<T> nodo = this.first;
+		int idx = 0;
+		while(nodo != null) {
+			if(nodo.getInfo().equals(data)) return idx;
+			idx++;
+			nodo = nodo.getNext();
+		}
+		return -1;
+	}
+	
 	public int size() {
 		return this.size;
 	}
@@ -58,6 +71,11 @@ public class MySimpleLinkedList<T> {
 
 	    s += "]";
 	    return s;
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+		return new MyIterator<>(this.first);
 	}
 	
 }
