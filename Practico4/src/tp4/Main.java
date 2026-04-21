@@ -8,36 +8,35 @@ public class Main {
 
 	
 		Grafo<Integer> g = new GrafoDirigido<>();
-		for (int i = 1; i <= 8; i++) {
+		for (int i = 1; i <= 7; i++) {
 		    g.agregarVertice(i);
 		}
 
-		g.agregarArco(1, 2, null);
-		g.agregarArco(1, 4, null);
+		g.agregarArco(1, 5, null);
+		g.agregarArco(1, 7, null);
 
-		g.agregarArco(2, 5, null);
-		g.agregarArco(2, 7, null);
-
-		g.agregarArco(3, 2, null);
-		g.agregarArco(3, 5, null);
-		g.agregarArco(3, 8, null);
-
+	
 		g.agregarArco(4, 6, null);
-		g.agregarArco(4, 7, null);
 
-		g.agregarArco(5, 7, null);
+
+		g.agregarArco(5, 6, null);
 		
 		
 		g.agregarArco(6, 1, null);
 
-		g.agregarArco(7, 6, null);
+		g.agregarArco(7, 4, null);
 
-		g.agregarArco(8, 7, null);
 		
-		//check_grafo(g);
+		check_grafo(g);
+
+		//DFS
+		/*DFS dfs = new DFS();
+		dfs.dfs(g, 4);*/
 		
-		DFS dfs = new DFS();
-		dfs.dfs(g, 4);
+		
+		//BFS
+		BFS bfs = new BFS();
+		bfs.bfs(g);
 		
 	}
 

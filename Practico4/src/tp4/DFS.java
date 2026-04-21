@@ -22,8 +22,8 @@ public class DFS {
 	
 	
 	/* TODO:
-	 * cambiar el actual por el primero del grafo evitando asi que no tenga que señalizar por donde arranca
-	 * No tengo ni las mas perra idea de como sacar el primer elem de un hashmap
+	 * cambiar el actual por el primero del grafo evitando asi que no tenga que señalizar por donde arranca X
+	 * No tengo ni las mas perra idea de como sacar el primer elem de un hashmap X
 	 */
 	
 	private void dfs(Grafo<?> grafo, int actual, ArrayList<Integer> visitados) {
