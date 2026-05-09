@@ -1,0 +1,147 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Punto5 {
+
+    private ArrayList<Procesador> mejorSolucion;
+    private int mejorTiempo;
+
+    public Punto5() {
+        this.mejorSolucion = new ArrayList<>();
+        this.mejorTiempo = Integer.MAX_VALUE;
+    }
+
+    public ArrayList<Procesador> asignarTareas(ArrayList<Procesador> procesadores, ArrayList<Tarea> tareas) {
+
+        asignarTareas(procesadores, tareas, 0);
+
+        return this.mejorSolucion;
+    }
+
+    private void asignarTareas(ArrayList<Procesador> procesadores, ArrayList<Tarea> tareas,int TareaActual) {
+
+        if (TareaActual == tareas.size()) {
+
+            int tiempoActual = calcularTiempoMaximo(procesadores);
+
+            if (tiempoActual < mejorTiempo) {
+                mejorTiempo = tiempoActual;
+                mejorSolucion = copiarProcesadores(procesadores);
+            }
+
+        }
+        else{
+                Tarea actual = tareas.get(TareaActual);
+                for (Procesador p : procesadores) {
+
+                    p.agregarTarea(actual);
+
+                    asignarTareas(procesadores, tareas, TareaActual + 1);
+
+                    p.quitarTarea(actual);
+                }
+        }
+    }
+
+    private int calcularTiempoMaximo(ArrayList<Procesador> procesadores) {
+
+        int max = 0;
+
+        for (Procesador p : procesadores) {
+            if (p.getCargaActual() > max) {
+                max = p.getCargaActual();
+            }
+        }
+
+        return max;
+    }
+
+    private ArrayList<Procesador> copiarProcesadores(ArrayList<Procesador> originales) {
+
+        ArrayList<Procesador> copia = new ArrayList<>();
+
+        for (Procesador p : originales) {
+            copia.add(new Procesador(p));
+        }
+
+        return copia;
+    }
+}
+
+-------------------------
+import java.util.ArrayList;
+import java.util.List;
+
+public class Procesador {
+
+    private String id;
+    private ArrayList<Tarea> tareas;
+    private int cargaActual;
+
+    public Procesador(String id) {
+        this.id = id;
+        this.tareas = new ArrayList<>();
+        this.cargaActual = 0;
+    }
+
+    // Constructor copia
+    public Procesador(Procesador otro) {
+
+        this.id = otro.id;
+        this.cargaActual = otro.cargaActual;
+
+        this.tareas = new ArrayList<>();
+
+        for (Tarea t : otro.tareas) {
+            this.tareas.add(t);
+        }
+    }
+
+    public void agregarTarea(Tarea t) {
+        this.tareas.add(t);
+        this.cargaActual += t.getTiempo();
+    }
+
+    public void quitarTarea(Tarea t) {
+        this.tareas.remove(t);
+        this.cargaActual -= t.getTiempo();
+    }
+
+    public int getCargaActual() {
+        return this.cargaActual;
+    }
+
+    @Override
+    public String toString() {
+
+        String s = "Procesador " + this.id + " -> ";
+
+        for (Tarea t : tareas) {
+            s += t.getId() + " ";
+        }
+
+        s += "| Tiempo total: " + cargaActual;
+
+        return s;
+    }
+}
+
+------------------
+public class Tarea {
+
+    private String id;
+    private int tiempo;
+
+    public Tarea(String id, int tiempo) {
+        this.id = id;
+        this.tiempo = tiempo;
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public int getTiempo() {
+        return this.tiempo;
+    }
+}
