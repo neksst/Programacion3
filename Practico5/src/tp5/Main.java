@@ -7,46 +7,90 @@ public class Main {
 
 	public static void main(String[] args) {
 	
-		/*
-		Grafo<Integer> grafo = new GrafoDirigido<Integer>();
+		Casillero c1 = new Casillero(1,"Amarillo");
+		Casillero c2 = new Casillero(2,"Amarillo");
+		Casillero c3 = new Casillero(3,"Amarillo");
+		Casillero c4 = new Casillero(4,"Verde");
+		Casillero c5 = new Casillero(5,"Amarillo");
+		Casillero c6 = new Casillero(6,"Amarillo");
+		Casillero c7 = new Casillero(7,"Amarillo");
+		Casillero c8 = new Casillero(8,"Verde");
+		Casillero c9 = new Casillero(9,"Verde");
+		Casillero c10 = new Casillero(10,"Amarillo");
+		Casillero c11 = new Casillero(11,"Amarillo");
+		Casillero c12 = new Casillero(12,"Verde");
+		Casillero c13 = new Casillero(13,"Verde");
+		Casillero c14 = new Casillero(14,"Verde");
+		Casillero c15 = new Casillero(15,"Verde");
+		Casillero c16 = new Casillero(17,"Amarillo");
 		
-		for(int i = 1; i <= 10; i++) {
-			grafo.agregarVertice(i);
-		}
+		c1.agregarAdyacente(c2);
+		c1.agregarAdyacente(c5);
 		
-		grafo.agregarArco(1, 2, null);
-		grafo.agregarArco(1, 3, null);
-		grafo.agregarArco(1, 10, null);
+		c2.agregarAdyacente(c1);
+		c2.agregarAdyacente(c3);
+		c2.agregarAdyacente(c6);
 		
-		grafo.agregarArco(2, 4, null);
-		grafo.agregarArco(2, 5, null);
+		c3.agregarAdyacente(c2);
+		c3.agregarAdyacente(c4);
+		c3.agregarAdyacente(c7);
 		
-		grafo.agregarArco(4, 6, null);
+		c4.agregarAdyacente(c3);
+		c4.agregarAdyacente(c8);
 		
-		grafo.agregarArco(5, 8, null);
+		c5.agregarAdyacente(c1);
+		c5.agregarAdyacente(c6);
+		c5.agregarAdyacente(c9);
 		
-		grafo.agregarArco(7, 9, null);
+		c6.agregarAdyacente(c2);
+		c6.agregarAdyacente(c5);
+		c6.agregarAdyacente(c7);
+		c6.agregarAdyacente(c10);
 		
-		grafo.agregarArco(8, 7, null);
-		grafo.agregarArco(8, 10, null);
+		c7.agregarAdyacente(c3);
+		c7.agregarAdyacente(c6);
+		c7.agregarAdyacente(c8);
+		c7.agregarAdyacente(c11);
 		
-		grafo.agregarArco(9, 10, null);
-		*/
-
-		/*
-		Punto1 p = new Punto1();
+		c8.agregarAdyacente(c4);
+		c8.agregarAdyacente(c7);
+		c8.agregarAdyacente(c12);
 		
-		System.out.println(p.buscarSalida(grafo, 1, 10));
-		*/
+		c9.agregarAdyacente(c5);
+		c9.agregarAdyacente(c10);
+		c9.agregarAdyacente(c13);
 		
-		/*
-		ArrayList<Integer> numeros = new ArrayList<Integer>(List.of(1,2,3,4,5,6));
-		Punto3 p = new Punto3();
-		System.out.println(p.buscarSuma(numeros, 10));
-		*/
-		ArrayList<Integer> conjunto = new ArrayList<Integer>(List.of(1,5,11,5));
-		Punto4 p = new Punto4();
-		System.out.println(p.existeParticiones(conjunto));
+		c10.agregarAdyacente(c6);
+		c10.agregarAdyacente(c9);
+		c10.agregarAdyacente(c14);
+		c10.agregarAdyacente(c11);
+		
+		c11.agregarAdyacente(c7);
+		c11.agregarAdyacente(c10);
+		c11.agregarAdyacente(c15);
+		c11.agregarAdyacente(c12);
+		
+		c12.agregarAdyacente(c8);
+		c12.agregarAdyacente(c11);
+		c12.agregarAdyacente(c16);
+		
+		c13.agregarAdyacente(c9);
+		c13.agregarAdyacente(c14);
+		
+		c14.agregarAdyacente(c10);
+		c14.agregarAdyacente(c13);
+		c14.agregarAdyacente(c15);
+		
+		c15.agregarAdyacente(c11);
+		c15.agregarAdyacente(c14);
+		c15.agregarAdyacente(c16);
+		
+		c16.agregarAdyacente(c12);
+		c16.agregarAdyacente(c15);
+		
+		
+		Punto6 p = new Punto6();
+		System.out.println(p.buscarCaminos(c9, 8));
 	}
 
 }
